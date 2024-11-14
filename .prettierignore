@@ -1,0 +1,10 @@
+# Ignore artifacts:
+src/reset.css
+*.md
+*.gif
+*.png
+*.jpg
+*.jpeg
+
+# Ignore json:
+*.json
