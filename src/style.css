@@ -1,0 +1,69 @@
+button:hover {
+    cursor: pointer;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+}
+
+.project-name {
+    font-size: max(3rem, 5vw);
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: max(2rem, 10%);
+}
+
+.tab {
+    background-color: bisque;
+    border: 0;
+    padding: 5px;
+    font-size: 1.5rem;
+    &:hover {
+        filter: brightness(0.5);
+    }
+}
+
+.on-this-tab {
+    background-color: green;
+    color: white;
+}
+
+.tab-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-card {
+    border: 2px solid rgb(175, 24, 24);
+}
+
+.info {
+    display: flex;
+    gap: 5px;
+}
+
+.icon-file {
+    height: 2rem;
+    width: 2rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.current-tab {
+    background-color: red;
+}
+
+.hourly-tab {
+    background-color: green;
+}
+
+.daily-tab {
+    background-color: blue;
+    color: white;
+}
