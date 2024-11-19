@@ -25,7 +25,40 @@ export function createInputDiv(tab) {
             let maxDate = dayjs(rawMaxDate).format('YYYY-MM-DD');
             dateInput.setAttribute('max', maxDate);
             inputDiv.appendChild(dateInput);
-        }
+        } else if (tab == 'daily') {
+            let todayDateRaw = dayjs();
+            let fifteenDaysLaterRaw = todayDateRaw.add(10, 'day');
+            let todayDate = todayDateRaw.format('YYYY-MM-DD');
+            let fifteenDaysLater = fifteenDaysLaterRaw.format('YYYY-MM-DD');
+            let fromDiv = document.createElement('div');
+            fromDiv.className = 'date-input-div'
+                let fromLabel = document.createElement('label');
+                fromLabel.textContent = 'From: '
+                fromLabel.for = 'from';
+                let fromInput = document.createElement('input');
+                fromInput.type = 'date';
+                fromInput.id = 'from';
+                fromInput.className = 'date-input';
+                fromInput.value = todayDate;
+                fromDiv.appendChild(fromLabel);
+                fromDiv.appendChild(fromInput);
+                
+                let toDiv = document.createElement('div');
+                toDiv.className = 'date-input-div'
+                let toLabel = document.createElement('label');
+                toLabel.textContent = 'To: '
+                toLabel.for = 'to';
+                let toInput = document.createElement('input');
+                toInput.type = 'date';
+                toInput.id = 'to';
+                toInput.className = 'date-input';
+                toInput.value = fifteenDaysLater;
+            toDiv.appendChild(toLabel);
+            toDiv.appendChild(toInput);
+
+            inputDiv.appendChild(fromDiv);
+            inputDiv.appendChild(toDiv);
+        } 
         let search = document.createElement('button');
         search.textContent = 'search';
         search.className = 'search';
@@ -79,6 +112,51 @@ function addEventListenerHourly() {
     })
 }
 
+function addEventListenerDaily() {
+    let search = document.querySelector('.search');
+    let fromDateInput = document.querySelector('#from');
+    let toDateInput = document.querySelector('#to');
+    search.addEventListener('click', () => {
+        let locationInput = document.querySelector('.location-input');
+        let location = locationInput.value;
+        let fromDateInput = document.querySelector('#from');
+        let fromDate = fromDateInput.value;
+        let toDateInput = document.querySelector('#to');
+        let toDate = toDateInput.value;
+        console.log(location, fromDate, toDate);
+        clearPreviousResult();
+        if ((location.trim() == '') || (fromDate == '') || (toDate == '')) {
+            let searchResultDiv= document.querySelector('.search-result');
+            searchResultDiv.textContent = 'Invalid Input';
+        } else {
+            doTheRestDaily(location, fromDate, toDate);
+        }
+    })
+    fromDateInput.addEventListener('input', () => {
+        let dayjsFromDate = dayjs(fromDateInput.value);
+        let dayjsToDate = dayjs(toDateInput.value);
+        if (fromDateInput.value == '') {
+            let todayDateRaw = dayjs();
+            fromDateInput.value = todayDateRaw.format('YYYY-MM-DD');
+        } else if (dayjsFromDate.isAfter(dayjsToDate)) {
+            fromDateInput.value = toDateInput.value;
+        }
+    })
+    
+    toDateInput.addEventListener('input', () => {
+        let dayjsFromDate = dayjs(fromDateInput.value);
+        let dayjsToDate = dayjs(toDateInput.value);
+        if (toDateInput.value == '') {
+            let todayDateRaw = dayjs();
+            let maxDateRaw = todayDateRaw.add(10, 'day')
+            toDateInput.value = maxDateRaw.format('YYYY-MM-DD');
+        } else if (dayjsFromDate.isAfter(dayjsToDate)) {
+            toDateInput.value = fromDateInput.value;
+        }
+    })
+
+}
+
 let tabButtons = document.querySelectorAll('.tab');
 tabButtons.forEach(tab => {
     tab.addEventListener('click', () => {
@@ -98,6 +176,7 @@ tabButtons.forEach(tab => {
             }
             else {
                 displayTab('daily');
+                addEventListenerDaily();
             }
         }
     })
@@ -135,12 +214,29 @@ async function doTheRestCurrent(inputLocation) {
     searchResultDiv.appendChild(finalInfoCard);
 }
 
+async function doTheRestDaily(location, fromDate, toDate) {
+    let json = await getDailyJson(location, fromDate, toDate);
+    console.log(json);
+    let locationToDisplay = document.querySelector('.location');
+    locationToDisplay.textContent = json.resolvedAddress;
+    let numOfDays = json.days.length;
+    for (let i = 0; i < numOfDays; i++) {
+        let infoCard = getInfoCard();
+        let finalInfoCard = insertValuesInCard(infoCard, json, i, 'daily');
+        let searchResultDiv = document.querySelector('.search-result');
+        searchResultDiv.appendChild(finalInfoCard);
+    }
+
+}
+
 function insertValuesInCard(infoCard, json, i, tab) {
     if (tab == 'current') {
         json = json.currentConditions
         console.log(json)
     } else if (tab == 'hourly') {
         json = json.days[0].hours[i];
+    } else if (tab == 'daily') {
+        json = json.days[i];
     }
     let time = infoCard.querySelector('.time');
     time.textContent = json.datetime;
@@ -174,6 +270,12 @@ async function getCurrentJson(inputLocation) {
 async function getHourlyJson(location, date) {
     let fetchResult = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/${date}/${date}?unitGroup=metric&include=hours&key=CPDRKTZAL4B8C8GGBDKP2DCMA&contentType=json`);
     let json = await fetchResult.json();
+    return json;
+}
+
+async function getDailyJson(location, fromDate, toDate) {
+    let response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/${fromDate}/${toDate}?unitGroup=metric&include=days&key=CPDRKTZAL4B8C8GGBDKP2DCMA&contentType=json`);
+    let json = await response.json()
     return json;
 }
 
