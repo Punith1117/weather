@@ -1,13 +1,21 @@
+@font-face {
+    font-family: chalk-font;
+    src: url(./fonts/After_Shok.ttf);
+}
+
 button:hover {
     cursor: pointer;
 }
 
 header {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .project-name {
+    font-family: chalk-font;
     font-size: max(3rem, 5vw);
 }
 
