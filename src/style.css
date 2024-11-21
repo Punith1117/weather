@@ -12,7 +12,7 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgb(0, 120, 175);
+    background-color: rgb(0, 137, 201);
 }
 
 .project-name {
@@ -32,7 +32,7 @@ header {
 }
 
 .tabs {
-    background-color: rgb(0, 120, 175);
+    background-color: rgb(0, 137, 201);
     display: flex;
     justify-content: center;
     gap: max(2rem, 10%);
