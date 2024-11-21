@@ -12,13 +12,24 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: rgb(0, 120, 175);
 }
 
 .project-name {
     font-family: chalk-font;
     font-size: max(3rem, 5vw);
+    color: rgba(255, 255, 255, 0.815);
+    padding-top: 1rem;
 }
 
+.author {
+    margin: 10px;
+    color: white;
+    a {
+        color: rgb(12, 255, 4);
+        text-underline-offset: 5px;
+    }
+}
 .tabs {
     display: flex;
     justify-content: center;
