@@ -23,7 +23,7 @@ header {
 }
 
 .author {
-    margin: 10px;
+    margin-bottom: 10px;
     color: white;
     a {
         color: rgb(12, 255, 4);
@@ -36,6 +36,7 @@ header {
     display: flex;
     justify-content: center;
     gap: max(2rem, 10%);
+    padding: 1rem;
 }
 
 .tab {
