@@ -1,165 +1,166 @@
 @font-face {
-    font-family: chalk-font;
-    src: url(./fonts/After_Shok.ttf);
+  font-family: chalk-font;
+  src: url(./fonts/After_Shok.ttf);
 }
 
 :root {
-    --my-blue: rgb(0, 137, 201);
+  --my-blue: rgb(0, 137, 201);
 }
 
 button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.507), var(--my-blue));
-    background-color: var(--my-blue);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.507), var(--my-blue));
+  background-color: var(--my-blue);
 }
 
 .project-name {
-    font-family: chalk-font;
-    font-size: max(3rem, 5vw);
-    color: rgba(255, 255, 255, 0.815);
-    padding-top: 1rem;
+  font-family: chalk-font;
+  font-size: max(3rem, 5vw);
+  color: rgba(255, 255, 255, 0.815);
+  padding-top: 1rem;
 }
 
 .author {
-    margin-bottom: 10px;
-    color: white;
-    a {
-        color: rgb(127, 255, 41);
-        text-underline-offset: 5px;
-    }
+  margin-bottom: 10px;
+  color: white;
+  a {
+    color: rgb(127, 255, 41);
+    text-underline-offset: 5px;
+  }
 }
 
 .tabs {
-    background-color: var(--my-blue);
-    display: flex;
-    justify-content: center;
-    gap: max(2rem, 10%);
-    padding: 1rem;
+  background-color: var(--my-blue);
+  display: flex;
+  justify-content: center;
+  gap: max(2rem, 10%);
+  padding: 1rem;
 }
 
 .tab {
-    background-color: transparent;
-    background-image: url(./imgs/compressed-cloud.png);
-    background-size: 115% 115%;
-    background-repeat: no-repeat;
-    background-position: center;
-    border: 0;
-    color: rgba(0, 0, 0, 0.514);
-    font-family: chalk-font;
-    font-weight: 700;
-    padding: 1rem;
+  background-color: transparent;
+  background-image: url(./imgs/compressed-cloud.png);
+  background-size: 115% 115%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 0;
+  color: rgba(0, 0, 0, 0.514);
+  font-family: chalk-font;
+  font-weight: 700;
+  padding: 1rem;
 }
 
 .on-this-tab {
-    color: black;
-    text-shadow: 3px 3px 10px black;
-    font-weight: 900;
+  color: black;
+  text-shadow: 3px 3px 10px black;
+  font-weight: 900;
 }
 
 .tab-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-image: linear-gradient(var(--my-blue), rgba(0, 0, 0, 0.507));
-    background-color: var(--my-blue);
-    color: white;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(var(--my-blue), rgba(0, 0, 0, 0.507));
+  background-color: var(--my-blue);
+  color: white;
+  gap: 1rem;
 }
 
 .location {
-    text-shadow: 3px 3px 3px black;
+  text-shadow: 3px 3px 3px black;
 }
 
 .info {
-    display: flex;
-    gap: 5px;
+  display: flex;
+  gap: 5px;
 }
 
 .icon-file {
-    height: 2rem;
-    width: 2rem;
-    background-size: contain;
-    background-repeat: no-repeat;
+  height: 2rem;
+  width: 2rem;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .input-div {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
-    padding-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding-top: 1rem;
 }
 
 input[type="text"] {
-    background-color: rgba(255, 255, 255, 0.671);
-    border: 0;
-    border-radius: 5px;
-    color: black;
-    padding: 5px;
-    font-family: monospace;
-    font-size: 1.2rem;
-    backdrop-filter: blur(5px);
-    outline: none;
-    &:focus {
-        background-color: rgba(0, 0, 0, 0.493);
-        color: white;
-    }
+  background-color: rgba(255, 255, 255, 0.671);
+  border: 0;
+  border-radius: 5px;
+  color: black;
+  padding: 5px;
+  font-family: monospace;
+  font-size: 1.2rem;
+  backdrop-filter: blur(5px);
+  outline: none;
+  &:focus {
+    background-color: rgba(0, 0, 0, 0.493);
+    color: white;
+  }
 }
 
 .search {
-    background-color: rgba(255, 255, 255, 0.568);
-    border: 0;
-    outline: none;
-    border-radius: 5px;
-    padding: 5px;
-    font-size: 1.2rem;
-    &:hover {
-        background-color: rgba(255, 255, 255, 0.822);
-    }
+  background-color: rgba(255, 255, 255, 0.568);
+  border: 0;
+  outline: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 1.2rem;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.822);
+  }
 }
 
 .current-tab > .search-result {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    .info-card {
-        width: max(25%, 15rem);
-    }
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .info-card {
+    width: max(25%, 15rem);
+  }
 }
 
-.daily-tab > .search-result, .hourly-tab > .search-result {
-    width: 100%;
-    padding-left: 3rem;
-    padding-right: 3rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-    gap: 2rem;
+.daily-tab > .search-result,
+.hourly-tab > .search-result {
+  width: 100%;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 2rem;
 }
 
 .info-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-image: radial-gradient(var(--my-blue), rgba(0, 0, 0, 0.705));
-    border-radius: 1rem;
-    padding-top: 5px;
-    padding-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: radial-gradient(var(--my-blue), rgba(0, 0, 0, 0.705));
+  border-radius: 1rem;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .icon {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .condition {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
