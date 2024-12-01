@@ -84,8 +84,8 @@ header {
 }
 
 .icon-file {
-  height: 2rem;
-  width: 2rem;
+  height: 5rem;
+  width: 5rem;
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -162,5 +162,6 @@ input[type="text"] {
 }
 
 .condition {
+  font-size: 1.5rem;
   margin-bottom: 1rem;
 }
